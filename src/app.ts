@@ -2,12 +2,19 @@ import express from "express";
 import bodyParser from "body-parser";
 const telegramBot = require("node-telegram-bot-api");
 import dotenv from "dotenv";
+import cors from "cors";
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3001;
 
 const bot = new telegramBot(process.env.TOKEN, { polling: true });
+
+app.use(
+  cors({
+    origin: "https://telegram-sms-6146857d675a.herokuapp.com",
+  })
+);
 
 // Middleware to parse JSON requests
 app.use(bodyParser.json());
