@@ -10,11 +10,7 @@ const port = process.env.PORT || 3001;
 
 const bot = new telegramBot(process.env.TOKEN, { polling: true });
 
-app.use(
-  cors({
-    origin: "https://telegram-sms-6146857d675a.herokuapp.com",
-  })
-);
+app.use(cors());
 
 // Middleware to parse JSON requests
 app.use(bodyParser.json());
